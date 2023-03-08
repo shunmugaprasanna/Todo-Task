@@ -12,8 +12,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const tasks: any = useSelector((state: RootState) => state?.toDo?.tasks);
-  console.log(tasks,"tasks");
-  
+  console.log(tasks, "tasks");
 
   const handleInputChange = (e: any) => {
     setValue(e.target.value);
@@ -21,7 +20,7 @@ const HomePage = () => {
 
   const handleSubmit = () => {
     setValues(value);
-    dispatch(addTask( value ));
+    dispatch(addTask(value));
   };
 
   console.log(values, "value1");
@@ -41,11 +40,11 @@ const HomePage = () => {
           Add +
         </button>
       </div>
-      {values&&<div className="toDoCardWrapper">
-        {tasks &&tasks?.map((el: any) => (
-          <Cards toDovalue={el} />
-        ))}
-      </div>}
+      {values && (
+        <div className="toDoCardWrapper">
+          {tasks && tasks?.map((el: any) => <Cards toDovalue={el} />)}
+        </div>
+      )}
     </div>
   );
 };

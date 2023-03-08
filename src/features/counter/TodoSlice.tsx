@@ -13,7 +13,6 @@ export const ToDoSlice = createSlice({
 
   reducers: {
     addTask: (state, action) => {
-      console.log(action.payload, "action");
       return {
         ...state,
         tasks: [...state.tasks, { text: action.payload }],

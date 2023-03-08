@@ -18,7 +18,7 @@ const InputWrapper = ({
   onChange,
 }: InputType) => {
   return (
-    <div>
+    <>
       <input
         type={type}
         placeholder={placeholder}
@@ -26,8 +26,8 @@ const InputWrapper = ({
         value={value}
         onChange={onChange}
         className={`${className} InputStyle`}
-      ></input>
-    </div>
+      />
+    </>
   );
 };
 

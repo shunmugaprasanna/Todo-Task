@@ -45,6 +45,7 @@
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+  padding-top: 20px;
 }
 .btn-wrap{
   display: flex;
@@ -52,4 +53,7 @@
 }
 .toDoCardWrapper{
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
