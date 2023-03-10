@@ -1,8 +1,8 @@
 import React from "react";
 
 type InputType = {
-  type: any;
-  placeholder: string;
+  type?: any;
+  placeholder?: string;
   name?: string;
   value?: string;
   className?: string;

@@ -1,16 +1,14 @@
-import InputWrapper from "../../Input";
-import Cards from "../../Cards";
-import { RootState } from "../../../app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-// import { useAppDispatch } from "../../../app/hooks";
-import { addTask } from "../../../features/counter/TodoSlice";
+import { addTask } from "../../features/counter/TodoSlice";
+import { RootState } from "../../app/store";
+import Cards from "../../Components/Cards";
+import InputWrapper from "../../Components/Input";
 
 const HomePage = () => {
   const [value, setValue] = useState<any>();
-  const [values, setValues] = useState<any>();
+  const [id, setId] = useState<any>(1);
   const dispatch = useDispatch();
-
   const tasks: any = useSelector((state: RootState) => state?.toDo?.tasks);
   console.log(tasks, "tasks");
 
@@ -19,17 +17,15 @@ const HomePage = () => {
   };
 
   const handleSubmit = () => {
-    setValues(value);
-    dispatch(addTask(value));
+    dispatch(addTask({ value: value, id: id }));
+    setId(id + 1);
   };
-
-  console.log(values, "value1");
 
   console.log(value, "value");
 
   return (
     <div className="HomePageWrapper">
-      <h1 className="hero">Redux-toolkit Todolist</h1>
+      <h1 className="hero"> Todolist using Redux-Toolkit </h1>
       <div className="valueWrapper">
         <InputWrapper
           onChange={handleInputChange}
@@ -40,7 +36,7 @@ const HomePage = () => {
           Add +
         </button>
       </div>
-      {values && (
+      {value && (
         <div className="toDoCardWrapper">
           {tasks && tasks?.map((el: any) => <Cards toDovalue={el} />)}
         </div>

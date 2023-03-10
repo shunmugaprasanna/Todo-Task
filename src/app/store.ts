@@ -6,6 +6,10 @@ export const store = configureStore({
     toDo: ToDoSlice.reducer,
   },
 });
+// export const deleteTask = remove =>({
+//   type : "REMOVE"
+//   payload : remove
+// })
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
