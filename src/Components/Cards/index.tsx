@@ -17,11 +17,11 @@ const Cards = ({ toDovalue }: any) => {
   };
   const handleEditChange = (e: any) => {
     setValue((prev: any) => e.target.value);
-    console.log("dasda");
+    console.log("handleEditChange");
   };
   const handleUpdate = (e: any) => {
     dispatch(updateTask({ id: toDovalue.id, text: value }));
-    console.log("update");
+    console.log("handleUpdate");
   };
 
   return (
@@ -33,17 +33,15 @@ const Cards = ({ toDovalue }: any) => {
         onChange={handleEditChange}
         disabled={!editView}
       />
-      <div>
-        <button
-          onClick={editView ? handleUpdate : handleEdit}
-          className="buttonWrapper"
-        >
-          {editView ? "Update" : "Edit"}
-        </button>
-        <button onClick={handleDelete} className="buttonWrapper">
-          DELETE
-        </button>
-      </div>
+      <button
+        onClick={editView ? handleUpdate : handleEdit}
+        className="buttonWrapper"
+      >
+        {editView ? "Update" : "Edit"}
+      </button>
+      <button onClick={handleDelete} className="buttonWrapper">
+        DELETE
+      </button>
     </div>
   );
 };

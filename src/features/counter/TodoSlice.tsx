@@ -17,10 +17,10 @@ export const ToDoSlice = createSlice({
       console.log(action, "action");
       return {
         ...state,
-        // previous value
+        // previous value and spreading all datas from state
         tasks: [
           ...state.tasks,
-          //
+          //previous value of tasks which given in initial state
           { text: action.payload.value, id: action.payload.id },
         ],
       };
@@ -29,31 +29,29 @@ export const ToDoSlice = createSlice({
       const id = action.payload;
       console.log("id", id);
       const temp = state?.tasks?.filter((tasks: any) => tasks.id !== id);
+      // if task.id and payload.id are equalit will delete the card
       return {
         ...state,
         tasks: temp,
       };
     },
-    // editTask: (state, action) => {
-    //   const index = state.tasks.findIndex(
-    //     (value: any) => value.id === action.payload.id
-    //   );
-    //   const editValue = [...state];
-    //   return  (editValue[index].text = action.payload.text);
-    // },
     updateTask: (state, action) => {
       const index = state.tasks.findIndex(
-        (value: any) => value.id === action.payload.id
+        (task: any) => task.id === action.payload.id
+        // checking id of task and payload id using findindex array method(checking index of id since it is array)
       );
       const givenValue = [...state.tasks];
-      givenValue[index].text = action.payload.text
-      state.tasks = givenValue
+      // we are converting state.task into array bcoz index value can only taken from array
+      givenValue[index].text = action.payload.text;
+      // assigning payload text (checking index value of text and assigning to payload.text)
+      state.tasks = givenValue;
+      // ( givenValue[index].text = action.payload.text;)=>(assigning updated value to store)
       return state;
+      // returning initial state
     },
   },
 });
 
-export const { addTask, deleteTask,updateTask } = ToDoSlice.actions;
+export const { addTask, deleteTask, updateTask } = ToDoSlice.actions;
 
 export default ToDoSlice;
-
