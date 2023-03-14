@@ -10,15 +10,20 @@ const HomePage = () => {
   const [id, setId] = useState<any>(1);
   const dispatch = useDispatch();
   const tasks: any = useSelector((state: RootState) => state?.toDo?.tasks);
+  // getting data from store
+
   console.log(tasks, "tasks");
 
   const handleInputChange = (e: any) => {
     setValue(e.target.value);
+    // it will listen all value which we give in input
   };
 
   const handleSubmit = () => {
     dispatch(addTask({ value: value, id: id }));
+    // when we pass multiple value use object
     setId(id + 1);
+    // adding card
   };
 
   console.log(value, "value");

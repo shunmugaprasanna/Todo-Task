@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 export interface CounterState {
   ToDoList: any;
 }
@@ -13,11 +12,15 @@ export const ToDoSlice = createSlice({
 
   reducers: {
     addTask: (state, action) => {
+      // state : it mentions initial state
+      // action : it mentions payload(values) and type
       console.log(action, "action");
       return {
         ...state,
+        // previous value
         tasks: [
           ...state.tasks,
+          //
           { text: action.payload.value, id: action.payload.id },
         ],
       };
@@ -32,17 +35,25 @@ export const ToDoSlice = createSlice({
       };
     },
     // editTask: (state, action) => {
-    //   const index  = action.payload.text;
-    //   // const editValue = state?.tasks.findIndex((tasks: any) => tasks.id === );
-
-    //   return {
-    //     ...state,
-    //     tasks:editValue,
-    //   };
+    //   const index = state.tasks.findIndex(
+    //     (value: any) => value.id === action.payload.id
+    //   );
+    //   const editValue = [...state];
+    //   return  (editValue[index].text = action.payload.text);
     // },
+    updateTask: (state, action) => {
+      const index = state.tasks.findIndex(
+        (value: any) => value.id === action.payload.id
+      );
+      const givenValue = [...state.tasks];
+      givenValue[index].text = action.payload.text
+      state.tasks = givenValue
+      return state;
+    },
   },
 });
 
-export const { addTask, deleteTask , } = ToDoSlice.actions;
+export const { addTask, deleteTask,updateTask } = ToDoSlice.actions;
 
 export default ToDoSlice;
+

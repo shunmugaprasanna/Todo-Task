@@ -2,6 +2,7 @@ import React from "react";
 
 type InputType = {
   type?: any;
+  disabled?:any
   placeholder?: string;
   name?: string;
   value?: string;
@@ -16,6 +17,7 @@ const InputWrapper = ({
   name,
   value,
   onChange,
+  disabled = false,
 }: InputType) => {
   return (
     <>
@@ -26,6 +28,7 @@ const InputWrapper = ({
         value={value}
         onChange={onChange}
         className={`${className} InputStyle`}
+        disabled={disabled}
       />
     </>
   );
